@@ -3,9 +3,6 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                node {
-                    checkout scm 
-                }
                 sh 'npm i'
                 echo  'build done'
             }
