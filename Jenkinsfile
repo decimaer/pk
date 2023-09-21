@@ -9,6 +9,8 @@ pipeline {
         }
         stage('test') {
             steps {
+                sh 'npm run lint'
+                sh 'npm audit --audit-level=high'
                 echo  'test done'
             }
         }
