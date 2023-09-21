@@ -1,12 +1,6 @@
 pipeline {
     agent  any
     stages {
-        stage('build') {
-            steps {
-                sh 'npm i'
-                echo  'build done'
-            }
-        }
         stage('test') {
             steps {
                 sh 'npm run lint'
@@ -14,9 +8,14 @@ pipeline {
                 echo  'test done'
             }
         }
+        stage('build') {
+            steps {
+                sh 'docker build -t hampushampus/cicd .'
+            }
+        }
         stage('deploy') {
             steps {
-                sh 'node index.js &'
+                sh 'docker push hampushampus/cicd'
             }
         }
     }
