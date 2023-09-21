@@ -14,5 +14,10 @@ pipeline {
                 echo  'test done'
             }
         }
+        stage('deploy') {
+            steps {
+                sh 'node index.js &'
+            }
+        }
     }
 }
